@@ -6,11 +6,17 @@
   </ul>
 </div>
 
-<%= form_for @shout do |form| %>
+  <%= form_for @shout do |form| %>
   <%= form.text_area :subject, placeholder: "Shout" %>
   <%= form.submit "Shout" %>
+  <% end %>
+
+<div>
+  <%= form_for @image_subject do |form| %>
+   <%= form.text_field :url, placeholder: "Image URL" %>
+   <%= form.submit "Shout image" %>
+  <% end %>
+</div>
 
 <h2> Timeline </h2>
 <%= render current_user.followed_shouts.reverse %>
-
-<% end %>

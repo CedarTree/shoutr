@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :shouts, only: [:create]
 
+  resources :image_subjects, only: [:create]
+
   get "/sign_up", to: "users#new"
 
   constraints Monban::Constraints::SignedIn.new do
