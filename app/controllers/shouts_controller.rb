@@ -1,6 +1,8 @@
 class ShoutsController < ApplicationController
   def create
-    current_user.shouts.create(shout_params)
+
+    text_subject = TextSubject.create(body: shout_params[:subject])
+    current_user.shouts.create(subject: text_subject)
     redirect_to :dashboard
   end
 
@@ -8,7 +10,7 @@ class ShoutsController < ApplicationController
 
   def shout_params
     params.require(:shout).permit(
-      :body,
+      :subject
     )
   end
 end
