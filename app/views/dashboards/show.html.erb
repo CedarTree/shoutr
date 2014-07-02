@@ -1,3 +1,5 @@
+
+
 <div>
   <%= link_to current_user.email, current_user.user_name %>
   <ul>
@@ -6,10 +8,20 @@
   </ul>
 </div>
 
+<div>
+  <%= form_tag("/search", method: "get") do %>
+   <%= text_field_tag(:q, "", placeholder: "Search for:") %>
+  <%= submit_tag("Search") %>
+<% end %>
+</div>
+
+<div>
+
   <%= form_for @shout do |form| %>
-  <%= form.text_area :subject, placeholder: "Shout" %>
-  <%= form.submit "Shout" %>
+   <%= form.text_area :subject, placeholder: "Shout" %>
+   <%= form.submit "Shout" %>
   <% end %>
+</div>
 
 <div>
   <%= form_for @image_subject do |form| %>

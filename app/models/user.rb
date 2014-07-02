@@ -40,4 +40,8 @@ class User < ActiveRecord::Base
   def to_param 
     user_name
   end
+
+  def self.search(query)
+    where("user_name like ?", "%#{query}%") 
+  end
 end

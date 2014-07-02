@@ -14,10 +14,11 @@ Rails.application.routes.draw do
   get "/sign_up", to: "users#new"
 
   constraints Monban::Constraints::SignedIn.new do
+    get "/search", to: "search#index"
     root to: "dashboards#show", as: :dashboard
     resource :following, only: [:show]
     resource :followers, only: [:show]
-
+    
     get ":user_name", to: "users#show", as: :user
 
 
