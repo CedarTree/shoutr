@@ -1,12 +1,16 @@
 <div>
   <%= link_to current_user.email, current_user %>
   <ul>
-    <li><%= link_to "Who You're Following", :following %></li>
-    <li><%= link_to "Followers", :followers %></li>
+    <li><%= link_to "Who You're Following", :following %>: <%= current_user.followed_users.count %></li>
+    <li><%= link_to "Followers", :followers %>: <%= current_user.followers.count %></li>
   </ul>
 </div>
 
 <%= form_for @shout do |form| %>
   <%= form.text_area :subject, placeholder: "Shout" %>
   <%= form.submit "Shout" %>
+
+<h2> Timeline </h2>
+<%= render current_user.followed_shouts.reverse %>
+
 <% end %>
