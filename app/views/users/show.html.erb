@@ -1,8 +1,11 @@
 <div>
   <%= @user.email %>
   <%= render "follow_button", user: @user %>
-
+<div>
+  <%= paginate @shouts %>
+</div>
   <ul>
     <%= render @shouts %>
+
   </ul>
 </div>

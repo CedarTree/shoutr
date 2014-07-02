@@ -19,4 +19,7 @@
 </div>
 
 <h2> Timeline </h2>
-<%= render current_user.timeline %>
+
+<%= paginate @timeline %>
+
+<%= render @timeline %>
