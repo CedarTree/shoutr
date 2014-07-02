@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   has_many :followers,
   through: :follower_relationships
 
+  validates :user_name, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+  validates :password_digest, presence: true
+
   def follow(other_user)
     followed_users << other_user
   end
@@ -27,13 +31,11 @@ class User < ActiveRecord::Base
     followed_user_ids.include?(other_user.id)
   end
 
-  def followed_shouts 
-    ppl_shouted = []
-    followed_users.each do |user|
-     user.shouts.each do |shout|
-      ppl_shouted << shout
-     end
-    end
-    ppl_shouted.sort_by {|shout| shout.created_at}
+  def timeline
+    Shout.where(user_id: followed_user_ids).order(created_at: :desc) 
+  end
+
+  def to_param 
+    user_name
   end
 end

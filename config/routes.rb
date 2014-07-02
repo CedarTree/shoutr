@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resource :following_relationship, only: [:create, :destroy]
   end
 
+
   resources :shouts, only: [:create]
 
   resources :image_subjects, only: [:create]
@@ -16,6 +17,10 @@ Rails.application.routes.draw do
     root to: "dashboards#show", as: :dashboard
     resource :following, only: [:show]
     resource :followers, only: [:show]
+
+    get ":user_name", to: "users#show", as: :user_name
+
+
   end
 
   root to: "sessions#new"

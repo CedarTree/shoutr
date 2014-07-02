@@ -1,6 +1,6 @@
 <li>
   <%= render shout.subject %>
 
-  <p> by <%= link_to shout.user.email, shout.user %>
+  <p> by <%= link_to shout.user.email, shout.user.user_name %>
   	<%= time_ago_in_words(shout.created_at) %> ago </p> 
 </li>

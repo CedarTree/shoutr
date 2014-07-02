@@ -1,5 +1,5 @@
 <div>
-  <%= link_to current_user.email, current_user %>
+  <%= link_to current_user.email, current_user.user_name %>
   <ul>
     <li><%= link_to "Who You're Following", :following %>: <%= current_user.followed_users.count %></li>
     <li><%= link_to "Followers", :followers %>: <%= current_user.followers.count %></li>
@@ -19,4 +19,4 @@
 </div>
 
 <h2> Timeline </h2>
-<%= render current_user.followed_shouts.reverse %>
+<%= render current_user.timeline %>
